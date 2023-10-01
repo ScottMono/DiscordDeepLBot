@@ -1,0 +1,5 @@
+config.json
+.env
+/DiscordDeeply/discord.log
+.DS_Store
+DiscordDeeply/.DS_Store
