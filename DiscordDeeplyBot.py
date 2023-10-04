@@ -44,12 +44,12 @@ async def on_message(message):
 
     await translation_help(message)
 
-    await guild_shit(message)
+    await guild_test_processing(message)
 
 # starting point/testing for role assignment based upon random shit. Will eventually swap to when a user joins
 
 
-async def guild_shit(message):
+async def guild_test_processing(message):
     if message.content.startswith('!guild'):
         guild_roles = message.guild.roles
         for role in guild_roles:
@@ -62,7 +62,7 @@ async def guild_shit(message):
 
 async def translation_help(message):
     if message.content.startswith('!help'):
-        await message.channel.send('Want to translate a message? Simple react to it with on of the following flag '
+        await message.channel.send('Want to translate a message? Simply react to it with on of the following flag '
                                    'emojis: :flag_bg:, :flag_cz:, :flag_dk:, :flag_de:, :flag_gr:, :flag_gb:, '
                                    ':flag_us:, :flag_es:, :flag_ee:, :flag_fi:, :flag_fr:, :flag_hu:, :flag_id:, '
                                    ':flag_it:, :flag_jp:, :flag_kr:, :flag_lt:, :flag_lv:, :flag_no:, :flag_nl:, '
@@ -146,7 +146,8 @@ async def translate_emoji_flag(emoji, reaction):
                 return
 
         if translated_message is not None:
-            await reaction.message.channel.send(translated_message)
+            translation_thread_to_message = await reaction.message.create_thread(name='Translated via reaction', auto_archive_duration=60, slowmode_delay=None, reason='Translation trigger by reaction')
+            await translation_thread_to_message.send(content=translated_message)
 
 # translate a message
 

@@ -3,3 +3,5 @@ config.json
 /DiscordDeeply/discord.log
 .DS_Store
 DiscordDeeply/.DS_Store
+/.idea/*
+discord.log
